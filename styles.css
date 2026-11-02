@@ -1,6 +1,5 @@
 :root {
-  --safe-area-top: env(safe-area-inset-top, 0px);
-  --feed-toolbar-height: calc(54px + var(--safe-area-top));
+  --feed-toolbar-height: 54px;
   color-scheme: only light;
   font-family: "Courier New", Courier, monospace;
   background: #000;
@@ -253,7 +252,7 @@ a[href] {
   left: 0;
   right: 0;
   height: var(--feed-toolbar-height);
-  padding: var(--safe-area-top) 14px 0;
+  padding: 0 14px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
