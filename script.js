@@ -159,6 +159,16 @@
     }
 
     copy.append(title, writing);
+    if (page.image) {
+      const image = document.createElement("img");
+      image.className = "page-charm";
+      image.src = page.image.src;
+      image.alt = page.image.alt;
+      image.width = page.image.width;
+      image.height = page.image.height;
+      image.decoding = "async";
+      copy.prepend(image);
+    }
     article.append(ascii, copy);
     return article;
   }

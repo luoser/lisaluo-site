@@ -8,6 +8,8 @@ Edit `content.js`, then run `node scripts/prerender.mjs` and commit both files. 
 
 Each writing array entry is one line, and an empty entry creates a stanza break. Each card fills one screen. The feed snaps one page at a time; `vv`, keyboard arrows, and Page Up/Down move between pages. The feed automatically loops forever. All poems remain saved in the source but are excluded from the visible feed.
 
+The greeting includes a small chrome turtle charm above the writing. Its optional `image` entry in `content.js` supplies the local asset, alt text, and intrinsic dimensions for both the static and enhanced feed. CSS displays it at 112px wide with a 24px gap before the greeting. The built-in image generator extracted the turtle onto transparency; `assets/chrome-turtle.prompt.txt` preserves the generation prompt. The Open Graph image is configured independently.
+
 The final home card is a 2×2 sobriety counter. Edit its `counters` entries in `content.js` to change labels or reset timestamps. Each reset is midnight in New York on the specified date, with an explicit UTC offset. The display counts complete elapsed 24-hour days, automatically updates when another day elapses, and catches up when the tab becomes visible again. The counters need no server or saved browser state.
 
 ## Sharing
@@ -28,7 +30,7 @@ The initial HTML contains the six real home cards, including the moodsearch link
 
 The JSON-LD in `index.html` identifies Lisa Luo, her role at moodsearch, and her authorship of Seek Entropy. Update it and the search description if those facts change. This supports standard search and machine understanding; it does not guarantee rankings, indexing, or AI citations. There is no special AI-only copy or schema.
 
-Open Graph and Twitter card tags share a 1200×630 PNG with the site's Courier typography. The committed PNG is ready to serve. Optionally regenerate it with `python3 scripts/render-social-card.py` (requires Pillow; use `--font` for a local Courier font on another OS). Changes to the intro/joy copy should also be reflected in that script and the image alt text.
+Open Graph and Twitter card tags share `social-card-chrome-v1.png`, a 1732×908 image of a chrome wilted flower and turtle surrounded by white space, without text. The built-in image generator created the composition; `assets/social-card-chrome-v1.prompt.txt` preserves the final prompt. Both metadata sets use the same absolute URL and descriptive alt text; the Open Graph dimensions match the actual file. Use a new versioned filename when replacing it to distinguish the asset from previously cached social previews. The original text-based `social-card.png` and its optional Pillow generator in `scripts/render-social-card.py` remain available as an alternative, but are not referenced by the current preview metadata.
 
 After launch, verify the domain in Google Search Console and Bing Webmaster Tools and submit `https://lisaluo.com/sitemap.xml`. Account verification must be completed in those services; the repository does not contain verification tokens.
 

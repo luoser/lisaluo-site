@@ -177,6 +177,14 @@ a[href] {
   margin: 0;
 }
 
+.page-charm {
+  display: block;
+  width: 112px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 24px;
+}
+
 .page-title {
   margin: 0 0 18px;
   font-size: 14px;
