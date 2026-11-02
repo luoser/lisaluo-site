@@ -12,8 +12,12 @@
   let currentShare;
 
   function pageUrl(page, tab) {
-    const url = new URL(window.location.href);
+    const url = new URL(document.baseURI || window.location.href);
     url.search = "";
+    url.hash = "";
+    if (tab === "home") {
+      return new URL(`share/home/${encodeURIComponent(page.id)}/`, new URL(".", url)).href;
+    }
     url.hash = `${tab}/${encodeURIComponent(page.id)}`;
     return url.href;
   }
@@ -78,7 +82,7 @@
     context.fillStyle = "#000";
     context.textBaseline = "top";
     context.font = '30px "Courier New", Courier, monospace';
-    context.fillText("lisa luo", margin, 90);
+    context.fillText("lisaluo.com", margin, 90);
     context.lineWidth = 2;
     context.beginPath();
     context.moveTo(margin, 158);

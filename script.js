@@ -202,7 +202,8 @@
     if (renderedPages.length > 0) {
       positions[activeTab] = readingPosition();
     }
-    const [requestedTab, encodedPageId] = window.location.hash.slice(1).split("/");
+    const route = window.location.hash.slice(1) || document.body.dataset.sharePage || "";
+    const [requestedTab, encodedPageId] = route.split("/");
     activeTab = Array.from(tabs).some((tab) => tab.dataset.feedTab === requestedTab) ? requestedTab : "home";
     if (requestedTab === "poetry" && activeTab === "home") {
       window.history.replaceState(window.history.state, "", "#home");

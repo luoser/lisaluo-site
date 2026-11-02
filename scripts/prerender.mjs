@@ -3,6 +3,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
+import { renderSharePages } from "./render-share-pages.mjs";
 
 const root = new URL("../", import.meta.url);
 const htmlPath = new URL("index.html", root);
@@ -68,3 +69,5 @@ if (process.argv.includes("--check")) {
   writeFileSync(htmlPath, rendered);
   console.log(`Rendered ${pages.length} home cards into ${fileURLToPath(htmlPath)}`);
 }
+
+renderSharePages(rendered, pages, process.argv.includes("--check"));
