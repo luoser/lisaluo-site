@@ -419,10 +419,6 @@ a[href] {
   display: none;
 }
 
-.share-dialog > form[method="dialog"] {
-  margin-top: 16px;
-}
-
 #subscribe-description {
   margin: 12px 0 20px;
 }
