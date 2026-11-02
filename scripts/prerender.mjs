@@ -41,6 +41,7 @@ function pageMarkup(page, index) {
   } else {
     body = (page.ascii ? `<pre class="page-ascii" aria-hidden="true">${escape(page.ascii)}</pre>` : "")
       + '<div class="page-copy">'
+      + (page.image ? `<img class="page-charm" src="${escape(page.image.src)}" alt="${escape(page.image.alt)}" width="${escape(page.image.width)}" height="${escape(page.image.height)}" decoding="async">` : "")
       + (page.title ? `<h2 class="page-title">${escape(page.title)}</h2>` : "")
       + `<pre class="page-writing">${writingMarkup(page)}</pre></div>`;
   }
