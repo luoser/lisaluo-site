@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Lisa Luo — writing, notes, and other transmissions.">
+    <title>Lisa Luo</title>
+    <link rel="stylesheet" href="styles.css?v=likes-1">
+  </head>
+  <body>
+    <div class="desktop-banner" aria-hidden="true">
+      *** best viewed on mobile ***
+    </div>
+
+    <main class="site-shell" id="home">
+      <section class="feed-frame" aria-label="Lisa Luo home feed">
+        <header class="feed-top" aria-label="Feed navigation">
+          <span>lisa luo</span>
+          <span>[for you]</span>
+        </header>
+
+        <div class="feed" id="feed" tabindex="0" aria-live="polite"></div>
+
+        <aside class="feed-actions" aria-label="Current page actions">
+          <button type="button" id="subscribe-updates" aria-label="Subscribe to seek entropy">[+]</button>
+          <button type="button" id="like-page" aria-label="Like this page" aria-pressed="false">&lt;3</button>
+          <span aria-hidden="true">[..]</span>
+          <button type="button" id="share-page" aria-label="Share this page">-&gt;</button>
+          <button type="button" id="next-page" aria-label="Scroll to the next page">vv</button>
+        </aside>
+
+        <nav class="feed-bottom" aria-label="Site navigation">
+          <a href="#home" data-feed-tab="home" aria-current="page">[home]</a>
+        </nav>
+
+        <div class="tutorial" id="tutorial" role="dialog" aria-modal="true" aria-labelledby="tutorial-title" hidden>
+          <div class="tutorial-box">
+            <p id="tutorial-title">scroll / swipe up</p>
+            <p>to see the next page</p>
+            <pre aria-hidden="true"> ^
+ |
+ |</pre>
+            <button type="button" id="dismiss-tutorial">[ got it ]</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="subscribe-dialog" id="subscribe-dialog" aria-labelledby="subscribe-title" aria-describedby="subscribe-description">
+      <h2 id="subscribe-title">seek entropy</h2>
+      <p id="subscribe-description">subscribe to my seek entropy substack.</p>
+      <form id="subscribe-form" method="post" target="_blank" rel="noopener noreferrer">
+        <input type="hidden" name="source" value="embed">
+        <label for="subscribe-email">your email</label>
+        <input id="subscribe-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@example.com" required autofocus aria-describedby="subscribe-status">
+        <button id="subscribe-submit" type="submit" disabled>[ subscribe ]</button>
+      </form>
+      <p id="subscribe-status" role="status">signups are coming soon.</p>
+      <p class="subscribe-terms">by subscribing, you agree to substack's <a href="https://seekentropy.substack.com/tos" target="_blank" rel="noopener noreferrer">terms</a>, <a href="https://seekentropy.substack.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>, and <a href="https://substack.com/ccpa#personal-data-collected" target="_blank" rel="noopener noreferrer">information collection notice</a>.</p>
+      <form method="dialog"><button type="submit">[ close ]</button></form>
+    </dialog>
+
+    <dialog class="share-dialog" id="share-dialog" aria-labelledby="share-title">
+      <h2 id="share-title">share this page</h2>
+      <img id="share-preview" alt="Image of the current page">
+      <label for="share-link">page link</label>
+      <input id="share-link" type="text" readonly spellcheck="false">
+      <div class="share-options">
+        <button type="button" id="native-share-page" hidden>[ share image ]</button>
+        <button type="button" id="copy-share-link">[ copy link ]</button>
+        <a id="save-share-image" download>[ save image ]</a>
+      </div>
+      <p id="share-status" role="status"></p>
+      <form method="dialog"><button type="submit">[ close ]</button></form>
+    </dialog>
+
+    <noscript>
+      <p class="noscript">javascript is required for the infinite feed.</p>
+    </noscript>
+
+    <script src="content.js?v=home-order-2"></script>
+    <script src="share.js?v=sharing-3"></script>
+    <script src="subscribe.js?v=seek-entropy-copy"></script>
+    <script src="script.js?v=likes-3"></script>
+  </body>
+</html>
