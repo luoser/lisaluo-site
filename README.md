@@ -4,7 +4,7 @@ A dependency-free static site designed for GitHub Pages.
 
 ## Editing the writing
 
-Edit `content.js`. `window.LISALUO_HOME_PAGES` holds the home intro cards; `window.LISALUO_POEMS` preserves the full poem library. The words tab is temporarily removed, so only home is visible and old `#poetry` links return to `#home`. The three-short-poem selection remains in `window.LISALUO_PAGES`; restoring a bottom navigation link with `href="#poetry"` and `data-feed-tab="poetry"` makes it available again. The scroll tutorial appears on the first visit to the feed.
+Edit `content.js`, then run `node scripts/prerender.mjs` and commit both files. This updates the real HTML feed for readers and crawlers that do not run JavaScript. `node scripts/prerender.mjs --check` verifies the static copy matches the source. `window.LISALUO_HOME_PAGES` holds the home intro cards; `window.LISALUO_POEMS` preserves the full poem library. The words tab is temporarily removed, so only home is visible and old `#poetry` links return to `#home`. The three-short-poem selection remains in `window.LISALUO_PAGES`; restoring a bottom navigation link with `href="#poetry"` and `data-feed-tab="poetry"` makes it available again. The scroll tutorial appears on the first visit to the feed.
 
 Each writing array entry is one line, and an empty entry creates a stanza break. Each card fills one screen. The feed snaps one page at a time; `vv`, keyboard arrows, and Page Up/Down move between pages. The feed automatically loops forever. All poems remain saved in the source but are excluded from the visible feed.
 
@@ -19,6 +19,18 @@ The right-hand `->` button opens an image preview and a link to that exact card,
 ## Email signup
 
 `[+]` opens the lowercase, monospace “seek entropy” modal. It subscribes to Seek Entropy using the public native HTML form action in [Substack's own signup embed](https://seekentropy.substack.com/embed), `https://seekentropy.substack.com/api/v1/free?nojs=true`, with `email` and `source=embed`. The browser validates the email and posts it directly to Substack in a new tab; Substack handles saving, any further signup steps, and confirmation. No emails are saved in browser storage, no private API key is needed, and the site never simulates a successful subscription. The modal links to the same terms, privacy policy, and information collection notice as Substack's embed. `window.LISALUO_SUBSCRIPTION` in `content.js` holds the public form configuration.
+
+## Search and link previews
+
+The homepage is the one indexable URL: `https://lisaluo.com/`. Feed fragments are reading positions, not separate search pages. The canonical tag, sitemap, and structured data use that same URL. `robots.txt` allows crawling and points to the sitemap. No analytics or additional tracking is installed.
+
+The initial HTML contains the six real home cards, including the moodsearch link. JavaScript enhances those cards into the looping feed; without JavaScript the same writing remains readable in a finite scroll. The sobriety fallback shows reset dates, with current day totals added by JavaScript. Excluded poems are not added to the static feed or sitemap.
+
+The JSON-LD in `index.html` identifies Lisa Luo, her role at moodsearch, and her authorship of Seek Entropy. Update it and the search description if those facts change. This supports standard search and machine understanding; it does not guarantee rankings, indexing, or AI citations. There is no special AI-only copy or schema.
+
+Open Graph and Twitter card tags share a 1200×630 PNG with the site's Courier typography. The committed PNG is ready to serve. Optionally regenerate it with `python3 scripts/render-social-card.py` (requires Pillow; use `--font` for a local Courier font on another OS). Changes to the intro/joy copy should also be reflected in that script and the image alt text.
+
+After launch, verify the domain in Google Search Console and Bing Webmaster Tools and submit `https://lisaluo.com/sitemap.xml`. Account verification must be completed in those services; the repository does not contain verification tokens.
 
 ## Previewing locally
 

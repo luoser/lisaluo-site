@@ -235,8 +235,10 @@ a[href] {
   font-size: 11px;
 }
 
-.feed-top span:first-child {
+.feed-top h1 {
   grid-column: 1;
+  margin: 0;
+  font: inherit;
   text-align: left;
 }
 
