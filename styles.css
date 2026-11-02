@@ -1,4 +1,6 @@
 :root {
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --feed-toolbar-height: calc(54px + var(--safe-area-top));
   color-scheme: only light;
   font-family: "Courier New", Courier, monospace;
   background: #000;
@@ -80,7 +82,7 @@ a[href] {
   width: 100%;
   height: 100%;
   min-height: 100%;
-  padding: 76px 68px calc(24px + env(safe-area-inset-bottom)) 24px;
+  padding: calc(var(--feed-toolbar-height) + 22px) 68px calc(24px + env(safe-area-inset-bottom)) 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -250,14 +252,15 @@ a[href] {
   top: 0;
   left: 0;
   right: 0;
-  height: 54px;
-  padding: env(safe-area-inset-top) 14px 0;
+  height: var(--feed-toolbar-height);
+  padding: var(--safe-area-top) 14px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   border-bottom: 1px solid #000;
   background: #fff;
   font-size: 11px;
+  line-height: 1.4;
 }
 
 .feed-top h1 {
@@ -450,7 +453,7 @@ a[href] {
 .tutorial {
   position: absolute;
   z-index: 30;
-  inset: 54px 0 0;
+  inset: var(--feed-toolbar-height) 0 0;
   display: grid;
   place-items: center;
   padding: 24px;
