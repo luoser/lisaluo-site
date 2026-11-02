@@ -1,4 +1,28 @@
 (() => {
+  document.querySelectorAll("dialog").forEach((dialog) => {
+    let pointerStartedOutside = false;
+    const isOutside = (event) => {
+      const bounds = dialog.getBoundingClientRect();
+      return event.target === dialog && (
+        event.clientX < bounds.left || event.clientX > bounds.right ||
+        event.clientY < bounds.top || event.clientY > bounds.bottom
+      );
+    };
+    dialog.addEventListener("pointerdown", (event) => {
+      pointerStartedOutside = isOutside(event);
+    });
+    dialog.addEventListener("pointercancel", () => {
+      pointerStartedOutside = false;
+    });
+    dialog.addEventListener("click", (event) => {
+      if (pointerStartedOutside && isOutside(event)) dialog.close();
+      pointerStartedOutside = false;
+    });
+    dialog.addEventListener("close", () => {
+      pointerStartedOutside = false;
+    });
+  });
+
   const poems = Array.isArray(window.LISALUO_PAGES) ? window.LISALUO_PAGES : [];
   const homePages = Array.isArray(window.LISALUO_HOME_PAGES) ? window.LISALUO_HOME_PAGES : [];
   const feeds = { home: homePages, poetry: poems };

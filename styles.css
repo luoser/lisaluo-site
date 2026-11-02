@@ -392,6 +392,24 @@ a[href] {
   cursor: pointer;
 }
 
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: -12px -10px 0 0;
+}
+
+.modal-header form {
+  margin: 0;
+}
+
+.modal-header .modal-close {
+  min-width: 44px;
+  padding: 0;
+  border: 0;
+}
+
 #share-status {
   min-height: 18px;
   margin: 12px 0;
@@ -399,6 +417,10 @@ a[href] {
 
 #share-status:empty {
   display: none;
+}
+
+.share-dialog > form[method="dialog"] {
+  margin-top: 16px;
 }
 
 #subscribe-description {

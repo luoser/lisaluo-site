@@ -69,7 +69,7 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="styles.css?v=single-counter-2">
+    <link rel="stylesheet" href="styles.css?v=modal-close-buttons-1">
   </head>
   <body>
     <div class="desktop-banner" aria-hidden="true">
@@ -117,8 +117,11 @@
     </main>
 
     <dialog class="subscribe-dialog" id="subscribe-dialog" aria-labelledby="subscribe-title" aria-describedby="subscribe-description">
-      <h2 id="subscribe-title">seek entropy</h2>
-      <p id="subscribe-description">subscribe to my seek entropy substack.</p>
+      <div class="modal-header">
+        <h2 id="subscribe-title">seek entropy</h2>
+        <form method="dialog"><button class="modal-close" type="submit" aria-label="Close subscription modal">[ x ]</button></form>
+      </div>
+      <p id="subscribe-description">subscribe to my seek entropy substack. i write longer form here sometimes.</p>
       <form id="subscribe-form" method="post" target="_blank" rel="noopener noreferrer">
         <input type="hidden" name="source" value="embed">
         <label for="subscribe-email">your email</label>
@@ -131,7 +134,10 @@
     </dialog>
 
     <dialog class="share-dialog" id="share-dialog" aria-labelledby="share-title">
-      <h2 id="share-title">share this page</h2>
+      <div class="modal-header">
+        <h2 id="share-title">share this page</h2>
+        <form method="dialog"><button class="modal-close" type="submit" aria-label="Close share modal">[ x ]</button></form>
+      </div>
       <img id="share-preview" alt="Image of the current page">
       <label for="share-link">page link</label>
       <input id="share-link" type="text" readonly spellcheck="false">
@@ -151,6 +157,6 @@
     <script src="content.js?v=single-counter-1"></script>
     <script src="share.js?v=single-counter-1"></script>
     <script src="subscribe.js?v=seek-entropy-copy"></script>
-    <script src="script.js?v=single-counter-1"></script>
+    <script src="script.js?v=outside-modal-close-1"></script>
   </body>
 </html>
