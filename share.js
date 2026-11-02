@@ -56,7 +56,7 @@
     }));
   }
 
-  function createImage(page, url, counters) {
+  function createImage(page, counters) {
     const canvas = document.createElement("canvas");
     canvas.width = 1080;
     canvas.height = 1920;
@@ -117,15 +117,6 @@
       drawLines(context, lines, margin, top + titleHeight, 70);
     }
 
-    const footerY = canvas.height - 200;
-    context.beginPath();
-    context.moveTo(margin, footerY);
-    context.lineTo(canvas.width - margin, footerY);
-    context.stroke();
-    context.font = '25px "Courier New", Courier, monospace';
-    const displayUrl = url.replace(/^https?:\/\//, "");
-    drawLines(context, wrapLines(context, displayUrl, width), margin, footerY + 42, 35);
-
     // Encode locally for both the save link and the device's native share sheet.
     const dataUrl = canvas.toDataURL("image/png");
     const bytes = Uint8Array.from(atob(dataUrl.split(",")[1]), (character) => character.charCodeAt(0));
@@ -162,7 +153,7 @@
     const payload = { title: page.title || "lisa luo", text, url };
     let image = null;
     try {
-      image = createImage(page, url, counters);
+      image = createImage(page, counters);
     } catch {
       // Link sharing still works if this browser cannot create a PNG.
     }
