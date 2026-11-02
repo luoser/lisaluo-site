@@ -82,6 +82,7 @@
   function makeSobrietyGrid(counters) {
     const grid = document.createElement("div");
     grid.className = "sobriety-grid";
+    grid.dataset.layout = counters.length === 1 ? "single" : "quadrants";
     // Keep automatic day changes from interrupting screen readers.
     grid.setAttribute("aria-live", "off");
 

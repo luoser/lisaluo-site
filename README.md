@@ -10,7 +10,7 @@ Each writing array entry is one line, and an empty entry creates a stanza break.
 
 The greeting contains only writing, and the toolbar keeps the lowercase name and centered feed label. The browser and social-preview title is `lisa luo`. Chrome imagery is used for the Open Graph preview; the standalone transparent turtle and its generation prompt remain in `assets/` for future use.
 
-The final home card is a 2×2 sobriety counter. Edit its `counters` entries in `content.js` to change labels or reset timestamps. Each reset is midnight in New York on the specified date, with an explicit UTC offset. The display counts complete elapsed 24-hour days, automatically updates when another day elapses, and catches up when the tab becomes visible again. The counters need no server or saved browser state.
+The 2×2 sobriety card is followed by a single screen-centered “no ice cream” counter, starting 10/24/26. Edit their `counters` entries in `content.js` to change labels or reset timestamps. A card with one counter uses the centered single layout, including its exported share image. Each reset is midnight in New York on the specified date, with an explicit UTC offset. The display counts complete elapsed 24-hour days, automatically updates when another day elapses, and catches up when the tab becomes visible again. The counters need no server or saved browser state.
 
 ## Sharing
 
@@ -30,7 +30,7 @@ The favicon is a transparent chrome orbit-heart charm, exported as 32px/48px PNG
 
 The homepage is the one indexable URL: `https://lisaluo.com/`. Feed fragments are reading positions, not separate search pages. The canonical tag, sitemap, and structured data use that same URL. `robots.txt` allows crawling and points to the sitemap. No analytics or additional tracking is installed.
 
-The initial HTML contains the six real home cards, including the moodsearch link. JavaScript enhances those cards into the looping feed; without JavaScript the same writing remains readable in a finite scroll. The sobriety fallback shows reset dates, with current day totals added by JavaScript. Excluded poems are not added to the static feed or sitemap.
+The initial HTML contains all home cards, including the moodsearch link. JavaScript enhances those cards into the looping feed; without JavaScript the same writing remains readable in a finite scroll. Counter fallbacks show reset dates, with current day totals added by JavaScript. Excluded poems are not added to the static feed or sitemap.
 
 The JSON-LD in `index.html` identifies Lisa Luo, her role at moodsearch, and her authorship of Seek Entropy. Update it and the search description if those facts change. This supports standard search and machine understanding; it does not guarantee rankings, indexing, or AI citations. There is no special AI-only copy or schema.
 

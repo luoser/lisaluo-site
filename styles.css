@@ -128,6 +128,19 @@ a[href] {
   border-bottom: 1px solid #000;
 }
 
+.sobriety-grid[data-layout="single"] {
+  position: absolute;
+  inset: 0;
+  width: calc(100% - 92px);
+  margin: auto;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.sobriety-grid[data-layout="single"] .sobriety-cell {
+  border: 0;
+}
+
 .sobriety-label,
 .sobriety-total,
 .sobriety-since {

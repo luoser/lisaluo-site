@@ -32,7 +32,7 @@ function pageMarkup(page, index) {
   let body;
   if (page.type === "sobriety") {
     // Reset dates remain accurate without JS; live day totals are an enhancement.
-    body = `<div class="sobriety-grid" aria-live="off">${page.counters.map((counter) => (
+    body = `<div class="sobriety-grid" data-layout="${page.counters.length === 1 ? "single" : "quadrants"}" aria-live="off">${page.counters.map((counter) => (
       `<section class="sobriety-cell" aria-label="${escape(counter.label)}">`
       + `<h2 class="sobriety-label">${escape(counter.label)}</h2>`
       + `<p class="sobriety-since">since <time datetime="${escape(counter.resetAt)}">${dateFormat.format(Date.parse(counter.resetAt))}</time></p>`

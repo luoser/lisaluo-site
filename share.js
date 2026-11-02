@@ -86,15 +86,18 @@
     context.stroke();
 
     if (counters) {
-      const top = 420;
-      const cellWidth = width / 2;
+      const single = counters.length === 1;
       const cellHeight = 460;
-      context.beginPath();
-      context.moveTo(canvas.width / 2, top);
-      context.lineTo(canvas.width / 2, top + cellHeight * 2);
-      context.moveTo(margin, top + cellHeight);
-      context.lineTo(canvas.width - margin, top + cellHeight);
-      context.stroke();
+      const top = single ? (canvas.height - cellHeight) / 2 : 420;
+      const cellWidth = single ? width : width / 2;
+      if (!single) {
+        context.beginPath();
+        context.moveTo(canvas.width / 2, top);
+        context.lineTo(canvas.width / 2, top + cellHeight * 2);
+        context.moveTo(margin, top + cellHeight);
+        context.lineTo(canvas.width - margin, top + cellHeight);
+        context.stroke();
+      }
       context.textAlign = "center";
       counters.forEach((counter, index) => {
         const x = margin + cellWidth * ((index % 2) + 0.5);
