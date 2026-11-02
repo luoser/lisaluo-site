@@ -8,7 +8,7 @@ Edit `content.js`, then run `node scripts/prerender.mjs` and commit both files. 
 
 Each writing array entry is one line, and an empty entry creates a stanza break. Each card fills one screen. The feed snaps one page at a time; `vv`, keyboard arrows, and Page Up/Down move between pages. The feed automatically loops forever. All poems remain saved in the source but are excluded from the visible feed.
 
-The greeting contains only writing, and the toolbar keeps the lowercase name and centered feed label. The browser and social-preview title is `lisa luo 🥀`. Chrome imagery is used for the Open Graph preview; the standalone transparent turtle and its generation prompt remain in `assets/` for future use.
+The greeting contains only writing, and the toolbar keeps the lowercase name and centered feed label. The browser and social-preview title is `lisa luo`. Chrome imagery is used for the Open Graph preview; the standalone transparent turtle and its generation prompt remain in `assets/` for future use.
 
 The final home card is a 2×2 sobriety counter. Edit its `counters` entries in `content.js` to change labels or reset timestamps. Each reset is midnight in New York on the specified date, with an explicit UTC offset. The display counts complete elapsed 24-hour days, automatically updates when another day elapses, and catches up when the tab becomes visible again. The counters need no server or saved browser state.
 
@@ -18,11 +18,15 @@ The heart toggles a personal like for the current card: `<3` becomes `[<3]` with
 
 The right-hand `->` button opens an image preview and a link to that exact card, such as `#home/joy`. Visitors can copy the link or save the PNG. Browsers with native sharing also show a share-image button, or a share-link button if file sharing is unsupported. Cancelling a native share has no other effect. The image preserves line breaks and includes the page URL; the sobriety image uses the current day counts and reset dates. Links use the current site origin and path, so local previews produce localhost links and the deployed website produces public links. No content is uploaded to an image service.
 
+The `[..]` action opens X's composer in a new tab with `@luoser hiii <3` prefilled. The visitor can edit and post their message on X.
+
 ## Email signup
 
 `[+]` opens the lowercase, monospace “seek entropy” modal. It subscribes to Seek Entropy using the public native HTML form action in [Substack's own signup embed](https://seekentropy.substack.com/embed), `https://seekentropy.substack.com/api/v1/free?nojs=true`, with `email` and `source=embed`. The browser validates the email and posts it directly to Substack in a new tab; Substack handles saving, any further signup steps, and confirmation. No emails are saved in browser storage, no private API key is needed, and the site never simulates a successful subscription. The modal links to the same terms, privacy policy, and information collection notice as Substack's embed. `window.LISALUO_SUBSCRIPTION` in `content.js` holds the public form configuration.
 
 ## Search and link previews
+
+The favicon is a transparent chrome orbit-heart charm, exported as 32px/48px PNGs and a multi-size ICO. `assets/favicon-orbit-heart-master.png` and its prompt preserve the built-in imagegen output. To regenerate the small icon files, run `python3 scripts/render-favicon.py` with Pillow installed. The original `favicon.svg` remains available as an alternative.
 
 The homepage is the one indexable URL: `https://lisaluo.com/`. Feed fragments are reading positions, not separate search pages. The canonical tag, sitemap, and structured data use that same URL. `robots.txt` allows crawling and points to the sitemap. No analytics or additional tracking is installed.
 

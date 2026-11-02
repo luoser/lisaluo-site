@@ -271,19 +271,22 @@ a[href] {
 }
 
 .feed-actions > span,
-.feed-actions > button {
+.feed-actions > button,
+.feed-actions > a {
   width: 44px;
   height: 44px;
   display: grid;
   place-items: center;
 }
 
-.feed-actions > button {
+.feed-actions > button,
+.feed-actions > a {
   margin: 0;
   padding: 0;
   color: #000;
   border: 0;
   background: transparent;
+  text-decoration: none;
   cursor: pointer;
 }
 
