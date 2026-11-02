@@ -24,7 +24,7 @@ function writingMarkup(page) {
   if (!page.link || !text.includes(page.link.text)) return escape(text);
   const index = text.indexOf(page.link.text);
   return escape(text.slice(0, index))
-    + `<a href="${escape(page.link.href)}">${escape(page.link.text)}</a>`
+    + `<a href="${escape(page.link.href)}" target="_blank" rel="noopener noreferrer">${escape(page.link.text)}</a>`
     + escape(text.slice(index + page.link.text.length));
 }
 

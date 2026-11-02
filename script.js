@@ -175,6 +175,8 @@
       const link = document.createElement("a");
       const start = writingText.indexOf(page.link.text);
       link.href = page.link.href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
       link.textContent = page.link.text;
       writing.replaceChildren(
         writingText.slice(0, start),

@@ -57,3 +57,9 @@ Repository: https://github.com/luoser/lisaluo-site.
 In Settings → Pages, select **Deploy from a branch**, branch `main`, folder `/(root)`. `.nojekyll` serves the static files directly; no build step is required. Future pushes to `main` publish updates.
 
 The initial Pages address is https://luoser.github.io/lisaluo-site/. To use lisaluo.com, set the custom domain in Pages settings, configure DNS at the domain provider, and enable HTTPS after the certificate is available. Private-repository Pages hosting requires a qualifying GitHub plan.
+
+## Security policy
+
+The homepage and generated share pages carry an early HTML Content Security Policy. Scripts and styles must come from this site; images can also use data URLs for local share previews. The policy blocks embedded objects, background network connections, and unapproved form destinations. The subscription form can post only to Seek Entropy/Substack, including redirects on the publication and Substack domains. Same-origin base URLs support the generated share pages. There are no inline executable scripts or `unsafe-inline`/`unsafe-eval` exceptions. Keep the policy before scripts and the generated base element, and run the prerender command after changing it.
+
+GitHub Pages serves the policy through HTML rather than a custom response header. Header-only controls such as `frame-ancestors` are not supplied by this meta policy. Secret scanning and secret-scanning push protection are enabled in repository settings; those settings are managed on GitHub, outside these files.

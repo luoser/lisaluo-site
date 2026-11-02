@@ -49,7 +49,8 @@ export function renderSharePages(html, pages, check = false) {
       "twitter:image:alt": description,
     };
     let rendered = html
-      .replace("<head>", '<head>\n    <base href="../../../">\n    <meta name="robots" content="noindex, follow">')
+      .replace(/(<meta http-equiv="Content-Security-Policy"[^>]+>)/,
+        '$1\n    <base href="../../../">\n    <meta name="robots" content="noindex, follow">')
       .replace('<link rel="canonical" href="https://lisaluo.com/">', `<link rel="canonical" href="${url}">`)
       .replace(/<title>[^<]*<\/title>/, () => `<title>${escape(title)} | lisa luo</title>`)
       .replace("<body>", `<body data-share-page="home/${page.id}">`)
