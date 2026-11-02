@@ -11,12 +11,6 @@ window.LISALUO_HOME_PAGES = [
   {
     id: "intro",
     title: "",
-    image: {
-      src: "assets/chrome-turtle.png",
-      alt: "Chrome turtle charm",
-      width: 1536,
-      height: 1024
-    },
     writing: [
       "hi i'm lisa :)"
     ]

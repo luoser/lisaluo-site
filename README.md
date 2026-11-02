@@ -8,7 +8,7 @@ Edit `content.js`, then run `node scripts/prerender.mjs` and commit both files. 
 
 Each writing array entry is one line, and an empty entry creates a stanza break. Each card fills one screen. The feed snaps one page at a time; `vv`, keyboard arrows, and Page Up/Down move between pages. The feed automatically loops forever. All poems remain saved in the source but are excluded from the visible feed.
 
-The greeting includes a small chrome turtle charm above the writing. Its optional `image` entry in `content.js` supplies the local asset, alt text, and intrinsic dimensions for both the static and enhanced feed. CSS displays it at 112px wide with a 24px gap before the greeting. The built-in image generator extracted the turtle onto transparency; `assets/chrome-turtle.prompt.txt` preserves the generation prompt. The Open Graph image is configured independently.
+The greeting contains only writing, and the toolbar keeps the lowercase name and centered feed label. The browser and social-preview title is `lisa luo 🥀`. Chrome imagery is used for the Open Graph preview; the standalone transparent turtle and its generation prompt remain in `assets/` for future use.
 
 The final home card is a 2×2 sobriety counter. Edit its `counters` entries in `content.js` to change labels or reset timestamps. Each reset is midnight in New York on the specified date, with an explicit UTC offset. The display counts complete elapsed 24-hour days, automatically updates when another day elapses, and catches up when the tab becomes visible again. The counters need no server or saved browser state.
 
