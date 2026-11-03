@@ -10,7 +10,7 @@ Each writing array entry is one line, and an empty entry creates a stanza break.
 
 The greeting contains only writing, and the toolbar keeps the lowercase name and centered feed label. The browser and social-preview title is `lisa luo`. Chrome imagery is used for the Open Graph preview; the standalone transparent turtle and its generation prompt remain in `assets/` for future use.
 
-The 2×2 sobriety card is followed by a single screen-centered “no ice cream” counter, starting 10/24/26. Edit their `counters` entries in `content.js` to change labels or reset timestamps. A card with one counter uses the centered single layout, including its exported share image. Each reset is midnight in New York on the specified date, with an explicit UTC offset. The display counts complete elapsed 24-hour days, automatically updates when another day elapses, and catches up when the tab becomes visible again. The counters need no server or saved browser state.
+The 2×2 sobriety card is followed by a single screen-centered “no ice cream” counter, starting 11/02/26. Edit their `counters` entries in `content.js` to change labels or reset timestamps. A card with one counter uses the centered single layout, including its exported share image. Each reset is midnight in New York on the specified date, with an explicit UTC offset. The display counts complete elapsed 24-hour days, automatically updates when another day elapses, and catches up when the tab becomes visible again. The counters need no server or saved browser state.
 
 ## Sharing
 

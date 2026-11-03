@@ -64,7 +64,7 @@ window.LISALUO_HOME_PAGES = [
     type: "sobriety",
     label: "no ice cream counter",
     counters: [
-      { label: "no ice cream", resetAt: "2026-10-24T00:00:00-04:00" }
+      { label: "no ice cream", resetAt: "2026-11-02T00:00:00-05:00" }
     ]
   }
 ];
