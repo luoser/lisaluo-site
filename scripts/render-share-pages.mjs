@@ -57,7 +57,7 @@ export function renderSharePages(html, pages, check = false) {
       .replace(/(<meta (?:name|property)="([^"]+)" content=")[^"]*(">)/g,
         (tag, start, key, end) => key in metadata ? start + escape(metadata[key]) + end : tag);
     // The selected card also comes first for visitors without JavaScript.
-    const articles = [...rendered.matchAll(/          <article class="feed-page"[^\n]*<\/article>/g)].map((match) => match[0]);
+    const articles = [...rendered.matchAll(/          <article class="feed-page"[\s\S]*?<\/article>/g)].map((match) => match[0]);
     if (articles.length !== pages.length) throw new Error("Static feed markup is missing");
     const rotated = [...articles.slice(index), ...articles.slice(0, index)];
     rendered = rendered.replace(/          <!-- feed:start -->[\s\S]*?          <!-- feed:end -->/,

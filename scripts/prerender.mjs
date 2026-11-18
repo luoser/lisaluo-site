@@ -9,8 +9,12 @@ const root = new URL("../", import.meta.url);
 const htmlPath = new URL("index.html", root);
 const context = vm.createContext({ window: {} });
 vm.runInContext(readFileSync(new URL("content.js", root), "utf8"), context);
-const pages = context.window.LISALUO_HOME_PAGES;
-if (!Array.isArray(pages) || !pages.length) throw new Error("Home feed is empty");
+const homePages = context.window.LISALUO_HOME_PAGES;
+if (!Array.isArray(homePages) || !homePages.length) throw new Error("Home feed is empty");
+// Static share previews list cities, since rendered clock values would go stale.
+const pages = homePages.map((page) => page.type === "world-clock"
+  ? { ...page, writing: page.cities.map(({ name }) => name) }
+  : page);
 
 const escape = (text) => String(text).replace(/[&<>"']/g, (character) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",

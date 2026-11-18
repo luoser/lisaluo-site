@@ -66,6 +66,17 @@ window.LISALUO_HOME_PAGES = [
     counters: [
       { label: "no ice cream", resetAt: "2026-11-14T00:00:00-05:00" }
     ]
+  },
+  {
+    id: "world-clock",
+    type: "world-clock",
+    label: "world clock",
+    cities: [
+      { name: "New York", timeZone: "America/New_York" },
+      { name: "San Francisco", timeZone: "America/Los_Angeles" },
+      { name: "Shenzhen", timeZone: "Asia/Shanghai" },
+      { name: "Kiev", timeZone: "Europe/Kiev" }
+    ]
   }
 ];
 

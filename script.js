@@ -73,6 +73,8 @@
   let suppressSettle = false;
   let counterNodes = [];
   let counterTimer;
+  let clockNodes = [];
+  let clockTimer;
   const resetDateFormat = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/New_York",
     month: "2-digit",
@@ -100,6 +102,18 @@
         return now < resetAt ? resetAt - now : 86400000 - ((now - resetAt) % 86400000);
       }));
       counterTimer = window.setTimeout(syncSobrietyCounters, Math.max(1000, Math.min(86400000, untilNextDay)));
+    }
+  }
+
+  function syncWorldClocks() {
+    window.clearTimeout(clockTimer);
+    const now = Date.now();
+    clockNodes.forEach(({ node, cities }) => {
+      const text = cities.map(({ name, formatter }) => `${name}\n${formatter.format(now)}`).join("\n\n");
+      if (node.textContent !== text) node.textContent = text;
+    });
+    if (!document.hidden && clockNodes.length > 0) {
+      clockTimer = window.setTimeout(syncWorldClocks, 1000 - (now % 1000));
     }
   }
 
@@ -171,6 +185,17 @@
 
     writing.className = "page-writing";
     writing.textContent = writingText;
+    if (page.type === "world-clock") {
+      writing.setAttribute("aria-live", "off");
+      clockNodes.push({ node: writing, cities: page.cities.map(({ name, timeZone }) => ({
+        name,
+        formatter: new Intl.DateTimeFormat("en-US", {
+          timeZone,
+          year: "numeric", month: "2-digit", day: "2-digit",
+          hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23",
+        }),
+      })) });
+    }
     if (page.link && writingText.includes(page.link.text)) {
       const link = document.createElement("a");
       const start = writingText.indexOf(page.link.text);
@@ -226,6 +251,7 @@
     window.clearTimeout(resizeTimer);
     window.clearTimeout(counterTimer);
     counterNodes = [];
+    clockNodes = [];
     tutorial.hidden = true;
     tutorialVisible = false;
     frame.setAttribute("aria-label", `Lisa Luo ${tabLabels[activeTab]} feed`);
@@ -250,6 +276,7 @@
     feed.replaceChildren(fragment);
     measurePages();
     syncSobrietyCounters();
+    syncWorldClocks();
     const position = positions[activeTab];
     jumpToPhysicalIndex(pages.length + position.index, position.offset);
     requestAnimationFrame(() => {
@@ -433,8 +460,12 @@
     }
   });
   shareButton.addEventListener("click", () => {
-    const page = pages[logicalIndex(physicalIndexAt())];
-    window.LISALUO_SHARE.sharePage(page, activeTab);
+    const index = physicalIndexAt();
+    const page = pages[logicalIndex(index)];
+    const sharePage = page.type === "world-clock"
+      ? { ...page, writing: renderedPages[index].querySelector(".page-writing").textContent }
+      : page;
+    window.LISALUO_SHARE.sharePage(sharePage, activeTab);
   });
   dismissTutorialButton.addEventListener("click", dismissTutorial);
 
@@ -466,5 +497,6 @@
 
   window.addEventListener("hashchange", renderFeed);
   document.addEventListener("visibilitychange", syncSobrietyCounters);
+  document.addEventListener("visibilitychange", syncWorldClocks);
   renderFeed();
 })();
