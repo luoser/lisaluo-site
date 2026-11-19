@@ -75,7 +75,7 @@ window.LISALUO_HOME_PAGES = [
       { name: "New York", timeZone: "America/New_York" },
       { name: "San Francisco", timeZone: "America/Los_Angeles" },
       { name: "Shenzhen", timeZone: "Asia/Shanghai" },
-      { name: "Kiev", timeZone: "Europe/Kiev" }
+      { name: "Kyiv", timeZone: "Europe/Kiev" }
     ]
   }
 ];
